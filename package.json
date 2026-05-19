@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
+    "build": "npm run check",
     "check": "node --check scripts/sync-ghl-calendar-calls.mjs && node --check api/sync-ghl-calendar-calls.mjs && node --check api/sync-ghl-calendar-calls-daily.mjs",
     "sync": "node scripts/sync-ghl-calendar-calls.mjs",
     "sync:dry-run": "DRY_RUN=true node scripts/sync-ghl-calendar-calls.mjs"
