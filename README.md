@@ -103,3 +103,13 @@ Recommended repository settings:
 - Keep the repo private unless the code has been reviewed for public release.
 - Add Vercel environment variables through the Vercel dashboard, not GitHub.
 - Protect `main` with the included CI workflow once the repository is created.
+
+## Sharing With Vercel
+
+You do not need to make this repository public just to connect it to someone else's Vercel account. The safer options are:
+
+1. Create or transfer this repository into their GitHub organization, then let their Vercel account import it.
+2. Keep the repo private and install/configure the Vercel GitHub App with access to only this repository.
+3. If you make it public, keep all secrets in Vercel environment variables only. The code can be public, but `.env` must never be committed.
+
+When installing the Vercel GitHub App, choose repository-limited access instead of all repositories whenever possible.
