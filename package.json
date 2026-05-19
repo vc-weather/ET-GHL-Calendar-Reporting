@@ -1,0 +1,16 @@
+{
+  "name": "et-ghl-calendar-reporting",
+  "version": "1.0.0",
+  "description": "Read-only GoHighLevel calendar appointment sync into Supabase.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "check": "node --check scripts/sync-ghl-calendar-calls.mjs && node --check api/sync-ghl-calendar-calls.mjs && node --check api/sync-ghl-calendar-calls-daily.mjs",
+    "sync": "node scripts/sync-ghl-calendar-calls.mjs",
+    "sync:dry-run": "DRY_RUN=true node scripts/sync-ghl-calendar-calls.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
