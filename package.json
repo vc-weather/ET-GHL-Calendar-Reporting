@@ -12,6 +12,6 @@
     "sync:dry-run": "DRY_RUN=true node scripts/sync-ghl-calendar-calls.mjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": "20.x"
   }
 }
