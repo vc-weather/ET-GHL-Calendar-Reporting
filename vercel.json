@@ -1,15 +1,5 @@
 {
   "outputDirectory": "public",
-  "crons": [
-    {
-      "path": "/api/sync-ghl-calendar-calls",
-      "schedule": "0 * * * *"
-    },
-    {
-      "path": "/api/sync-ghl-calendar-calls-daily",
-      "schedule": "15 7 * * *"
-    }
-  ],
   "functions": {
     "api/health.mjs": {
       "maxDuration": 10
