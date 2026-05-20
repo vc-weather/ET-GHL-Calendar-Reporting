@@ -7,15 +7,12 @@ export default async function handler(request, response) {
   }
 
   const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret) {
-    const authHeader = request.headers.authorization ?? "";
-    const querySecret = request.query?.secret;
-    const hasBearerSecret = authHeader === `Bearer ${cronSecret}`;
-    const hasQuerySecret = querySecret === cronSecret;
+  if (!cronSecret && process.env.NODE_ENV === "production") {
+    return response.status(500).json({ error: "CRON_SECRET is not configured" });
+  }
 
-    if (!hasBearerSecret && !hasQuerySecret) {
-      return response.status(401).json({ error: "Unauthorized" });
-    }
+  if (cronSecret && !isAuthorized(request, cronSecret)) {
+    return response.status(401).json({ error: "Unauthorized" });
   }
 
   try {
@@ -31,6 +28,12 @@ export default async function handler(request, response) {
     console.error(error);
     return response.status(500).json({ ok: false, error: error.message });
   }
+}
+
+function isAuthorized(request, cronSecret) {
+  const authHeader = request.headers.authorization ?? "";
+  const querySecret = request.query?.secret;
+  return authHeader === `Bearer ${cronSecret}` || querySecret === cronSecret;
 }
 
 function getSyncWindow(query = {}) {

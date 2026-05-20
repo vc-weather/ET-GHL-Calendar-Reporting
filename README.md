@@ -87,6 +87,12 @@ For a one-off range:
 curl -H "Authorization: Bearer $CRON_SECRET" "https://your-app.vercel.app/api/sync-ghl-calendar-calls?startDate=2026-01-01&endDate=2026-12-31"
 ```
 
+Check deployment configuration without touching GHL or Supabase:
+
+```bash
+curl "https://your-app.vercel.app/api/health"
+```
+
 ## GitHub Checklist
 
 Before pushing:
